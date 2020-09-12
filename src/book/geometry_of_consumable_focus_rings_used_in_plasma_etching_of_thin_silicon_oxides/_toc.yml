@@ -1,5 +1,5 @@
-- file: intro
-- file: content
+- file: 01-intro
   sections:
-    - file: markdown
+    - file: 02-semiconductor
+    - file: 03-process
     - file: notebooks
