@@ -1,6 +1,6 @@
 # Equipment
 
-# Parts of an Etch Chamber
+### Parts of an Etch Chamber
 
 ### Factory Interface
 
@@ -9,7 +9,7 @@
 ### wafer handling robots
 ![ robots ](images/robot.jpg)
 
-# Rings
+### Rings
 
 ### Quartz
 ![ quartz ring ](images/quarts-focus-ring.jpg)
