@@ -2,4 +2,5 @@
   sections:
     - file: 02-semiconductor
     - file: 03-process
+    - file: 04-equipment
     - file: notebooks
