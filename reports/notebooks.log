@@ -20,21 +20,22 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 import numpy as np
 import pandas as pd
 import seaborn as sns
+sns.set(rc={'figure.figsize':(10,8)})
 df = pd.DataFrame({
     "run-order":pd.Series(np.arange(20)),
     "ring-angle":pd.Series(["45deg","45deg","45deg","45deg","45deg","45deg","45deg","45deg","45deg","45deg","55deg","55deg","55deg","55deg","55deg","55deg","55deg","55deg","55deg","55deg"]),
-    "yield":pd.Series([89.7,81.4,84.5,84.8,87.3,79.7,85.1,81.7,83.7,84.5,84.7,86.1,83.2,91.9,86.3,79.3,82.6,89.1,83.7,88.5]),                           
+    "yield":pd.Series([88.7,81.4,84.5,84.8,87.3,80.7,85.1,81.7,83.7,84.5,84.7,86.1,83.2,91.9,86.3,79.3,82.6,89.1,83.7,88.5]),                           
     })
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m<ipython-input-1-76c5fde34f3f>[0m in [0;36m<module>[0;34m[0m
+[0;32m<ipython-input-1-a992647257c4>[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      3[0m [0;32mimport[0m [0mseaborn[0m [0;32mas[0m [0msns[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m df = pd.DataFrame({
-[1;32m      5[0m     [0;34m"run-order"[0m[0;34m:[0m[0mpd[0m[0;34m.[0m[0mSeries[0m[0;34m([0m[0mnp[0m[0;34m.[0m[0marange[0m[0;34m([0m[0;36m20[0m[0;34m)[0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0msns[0m[0;34m.[0m[0mset[0m[0;34m([0m[0mrc[0m[0;34m=[0m[0;34m{[0m[0;34m'figure.figsize'[0m[0;34m:[0m[0;34m([0m[0;36m10[0m[0;34m,[0m[0;36m8[0m[0;34m)[0m[0;34m}[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m df = pd.DataFrame({
 
 [0;31mModuleNotFoundError[0m: No module named 'pandas'
 ModuleNotFoundError: No module named 'pandas'
