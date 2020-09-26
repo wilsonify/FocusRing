@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Geometry of Consumable Focus Rings Used in Plasma Etching of Thin Silicon-Oxides</title>
+    <title>Let’s observe the factory &#8212; Geometry of Consumable Focus Rings Used in Plasma Etching of Thin Silicon-Oxides</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -36,7 +36,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Process" href="03-process.html" />
+    <link rel="prev" title="Equipment" href="04-equipment.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -76,7 +76,7 @@
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="02-semiconductor.html">
    Semiconductor Fabrication
@@ -85,6 +85,31 @@
  <li class="toctree-l1">
   <a class="reference internal" href="03-process.html">
    Process
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-equipment.html">
+   Equipment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-equipment.html#parts-of-an-etch-chamber">
+   Parts of an Etch Chamber
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-equipment.html#rings">
+   Rings
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Let’s observe the factory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#let-s-design-an-experiment">
+   Let’s Design an experiment
   </a>
  </li>
 </ul>
@@ -178,7 +203,19 @@
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#consider-the-distribution-of-differences">
+   Consider the Distribution of differences
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#beware-simpson-s-paradox">
+   Beware Simpson’s paradox
+  </a>
+ </li>
+</ul>
+
         </nav>
     </div>
 </div>
@@ -187,44 +224,98 @@
         
               <div>
                 
-  <p>Let’s observe the factory</p>
-<p>Let’s Design an experiment</p>
+  <div class="section" id="let-s-observe-the-factory">
+<h1>Let’s observe the factory<a class="headerlink" href="#let-s-observe-the-factory" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span><span class="p">,</span> <span class="n">cycler</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19680801</span><span class="p">)</span>
-
-<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)))</span>
-
-
-<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
-<span class="n">custom_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)]</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">]);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;run-order&quot;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">)),</span>
+    <span class="s2">&quot;ring-angle&quot;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;45deg&quot;</span><span class="p">,</span><span class="s2">&quot;45deg&quot;</span><span class="p">,</span><span class="s2">&quot;45deg&quot;</span><span class="p">,</span><span class="s2">&quot;45deg&quot;</span><span class="p">,</span><span class="s2">&quot;45deg&quot;</span><span class="p">,</span><span class="s2">&quot;45deg&quot;</span><span class="p">,</span><span class="s2">&quot;45deg&quot;</span><span class="p">,</span><span class="s2">&quot;45deg&quot;</span><span class="p">,</span><span class="s2">&quot;45deg&quot;</span><span class="p">,</span><span class="s2">&quot;45deg&quot;</span><span class="p">,</span><span class="s2">&quot;55deg&quot;</span><span class="p">,</span><span class="s2">&quot;55deg&quot;</span><span class="p">,</span><span class="s2">&quot;55deg&quot;</span><span class="p">,</span><span class="s2">&quot;55deg&quot;</span><span class="p">,</span><span class="s2">&quot;55deg&quot;</span><span class="p">,</span><span class="s2">&quot;55deg&quot;</span><span class="p">,</span><span class="s2">&quot;55deg&quot;</span><span class="p">,</span><span class="s2">&quot;55deg&quot;</span><span class="p">,</span><span class="s2">&quot;55deg&quot;</span><span class="p">,</span><span class="s2">&quot;55deg&quot;</span><span class="p">]),</span>
+    <span class="s2">&quot;yield&quot;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">89.7</span><span class="p">,</span><span class="mf">81.4</span><span class="p">,</span><span class="mf">84.5</span><span class="p">,</span><span class="mf">84.8</span><span class="p">,</span><span class="mf">87.3</span><span class="p">,</span><span class="mf">79.7</span><span class="p">,</span><span class="mf">85.1</span><span class="p">,</span><span class="mf">81.7</span><span class="p">,</span><span class="mf">83.7</span><span class="p">,</span><span class="mf">84.5</span><span class="p">,</span><span class="mf">84.7</span><span class="p">,</span><span class="mf">86.1</span><span class="p">,</span><span class="mf">83.2</span><span class="p">,</span><span class="mf">91.9</span><span class="p">,</span><span class="mf">86.3</span><span class="p">,</span><span class="mf">79.3</span><span class="p">,</span><span class="mf">82.6</span><span class="p">,</span><span class="mf">89.1</span><span class="p">,</span><span class="mf">83.7</span><span class="p">,</span><span class="mf">88.5</span><span class="p">]),</span>                           
+    <span class="p">})</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/notebooks_7_0.png" src="_images/notebooks_7_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">76</span><span class="n">c5fde34f3f</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="s2">&quot;run-order&quot;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">)),</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
 </div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;run-order&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;yield&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ring-angle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;run-order&#39;, ylabel=&#39;yield&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/notebooks_2_1.png" src="_images/notebooks_2_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;ring-angle&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;yield&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;ring-angle&quot;</span><span class="p">,)</span><span class="c1">#notch=True)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;ring-angle&#39;, ylabel=&#39;yield&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/notebooks_3_1.png" src="_images/notebooks_3_1.png" />
+</div>
+</div>
+<div class="section" id="consider-the-distribution-of-differences">
+<h2>Consider the Distribution of differences<a class="headerlink" href="#consider-the-distribution-of-differences" title="Permalink to this headline">¶</a></h2>
+<p><img alt=" Distribution " src="_images/distribution-of-differences.png" /></p>
+</div>
+<div class="section" id="beware-simpson-s-paradox">
+<h2>Beware Simpson’s paradox<a class="headerlink" href="#beware-simpson-s-paradox" title="Permalink to this headline">¶</a></h2>
+<p><img alt=" paradox " src="_images/simpsons-paradox.png" /></p>
+</div>
+</div>
+<div class="section" id="let-s-design-an-experiment">
+<h1>Let’s Design an experiment<a class="headerlink" href="#let-s-design-an-experiment" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;time&quot;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span>
+        <span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span>
+        <span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span>
+        <span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span>
+        <span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span>
+    <span class="p">]),</span>
+    <span class="s2">&quot;temperature&quot;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span>
+        <span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span>
+        <span class="mi">70</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span>
+        <span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span>
+        <span class="mi">70</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">70</span><span class="p">]),</span>
+    <span class="s2">&quot;pressure&quot;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span>
+        <span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span>
+        <span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span>
+        <span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span>
+        <span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">]),</span>    
+    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt=" DOE " src="_images/3d-DOE.png" /></p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -255,7 +346,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="03-process.html" title="previous page">Process</a>
+    <a class='left-prev' id="prev-link" href="04-equipment.html" title="previous page">Equipment</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
