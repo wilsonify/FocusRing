@@ -43,7 +43,7 @@ launch_buttons:
 
 repository:
   url                       : https://github.com/wilsonify/FocusRing  # The URL to your book's repository
-  path_to_book              : "geometry_of_consumable_focus_rings_used_in_plasma_etching_of_thin_silicon_oxides"  # A path to your book's folder, relative to the repository root.
+  path_to_book              : "src/book/geometry_of_consumable_focus_rings_used_in_plasma_etching_of_thin_silicon_oxides"  # A path to your book's folder, relative to the repository root.
   branch                    : master  # Which branch of the repository should be used when creating links
 
 #######################################################################################
