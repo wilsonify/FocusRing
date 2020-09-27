@@ -21,7 +21,9 @@ Plasma density at the wafer's edge is sensitive to the geometry and material sel
 
 ![ focus ring angle ](images/focus-ring-90-75-55-45.png)
 
-[source code](https://github.com/wilsonify/FocusRing)
+![ plasma ](images/plasma-density.png)
+
+[ source code ](https://github.com/wilsonify/FocusRing)
 
 {cite}`van2004microchip`
  
