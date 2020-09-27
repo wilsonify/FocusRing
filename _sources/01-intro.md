@@ -27,5 +27,11 @@ Plasma density at the wafer's edge is sensitive to the geometry and material sel
  
 {cite}`boning2003semi`
 
+{cite}`babaeva2007penetration`
+
+
+Bibliography
+============================
+ 
 ```{bibliography} references.bib
 ```
